@@ -1,10 +1,15 @@
+import java.util.ArrayList;
 
 public class FootballFactory {
     public FootballFactory(String line) {
 
     }
 
-    public FootballModel[] all() {
-        return new FootballModel[0];
+    public ArrayList<FootballModel> all() {
+        ArrayList<FootballModel> result = new ArrayList<FootballModel>();
+
+
+
+        return result;
     }
 }

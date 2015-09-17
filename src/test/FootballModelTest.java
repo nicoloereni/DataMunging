@@ -18,4 +18,19 @@ public class FootballModelTest {
 
     }
 
+    @Test
+    public void createFootballItemEmptyLineInput()
+    {
+        FootballModel footballModel = new FootballModel(
+                ""
+        );
+
+        assertEquals(null, footballModel.goalsDone);
+        assertEquals(null, footballModel.goalsGet);
+        assertEquals(null, footballModel.getGoalsDifference());
+        assertEquals(null, footballModel.teamName);
+
+    }
+
+
 }
