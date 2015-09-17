@@ -3,11 +3,11 @@
 import junit.framework.TestCase;
 import org.junit.Test;
 
-public class WeathersApiTest {
+public class WeathersFactoryTest {
 
     @Test
     public void weathersApiGetAllItemsTest(){
-        WeathersApi weathersApi = new WeathersApi("weather.dat");
+        WeathersFactory weathersApi = new WeathersFactory("weather.dat");
         TestCase.assertNotNull(weathersApi.all());
         TestCase.assertEquals(32, weathersApi.all().size());
         TestCase.assertEquals(

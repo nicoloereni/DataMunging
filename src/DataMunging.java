@@ -10,7 +10,7 @@ public class DataMunging {
 
     public String getLowerTemperatureDay() {
 
-        WeathersApi weathersApi = new WeathersApi(fileName);
+        WeathersFactory weathersApi = new WeathersFactory(fileName);
         ArrayList<WeatherModel> weatherModels = weathersApi.all();
 
         WeatherModel lowestTemperatureWeather = new WeatherModel(null);

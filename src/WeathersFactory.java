@@ -4,11 +4,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class WeathersApi {
+public class WeathersFactory {
 
     private final String fileName;
 
-    public WeathersApi(String fileName){
+    public WeathersFactory(String fileName){
         this.fileName = fileName;
     }
 
