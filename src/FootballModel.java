@@ -1,5 +1,5 @@
 
-public class FootballModel {
+public class FootballModel implements DataModel {
     public Integer goalsDone = null;
     public Integer goalsGet = null;
     public String teamName = null;

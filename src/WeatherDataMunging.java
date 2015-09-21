@@ -1,21 +1,28 @@
 import java.util.ArrayList;
 
-public class DataMunging {
+public class WeatherDataMunging {
 
     private String fileName;
 
-    public DataMunging(String fileName){
+    public WeatherDataMunging(String fileName){
         this.fileName = fileName;
     }
 
     public String getLowerTemperatureDay() {
 
-        WeathersFactory weathersApi = new WeathersFactory(fileName);
-        ArrayList<WeatherModel> weatherModels = weathersApi.all();
+        DataFactory weathersFactory = new DataFactory(fileName) {
+            @Override
+            public DataModel createInstance(String line) {
+                return new WeatherModel(line);
+            }
+        };
+        ArrayList<DataModel> weatherModels = weathersFactory.all();
 
         WeatherModel lowestTemperatureWeather = new WeatherModel(null);
 
-        for(WeatherModel weatherModel:weatherModels){
+        for(DataModel datamodel:weatherModels){
+
+            WeatherModel weatherModel = (WeatherModel) datamodel;
 
             if(weatherModel.isTempIsLowerThen(lowestTemperatureWeather.minTemp))
             {

@@ -1,5 +1,5 @@
 
-public class WeatherModel {
+public class WeatherModel implements DataModel{
     public String dayNumber;
     public Integer minTemp;
 

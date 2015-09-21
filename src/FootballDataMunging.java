@@ -5,10 +5,16 @@ public class FootballDataMunging {
 
         FootballModel footballTeamWorstGoalsDifference = new FootballModel("");
 
-        FootballFactory footballFactory = new FootballFactory("football.dat");
+        DataFactory dataFactory = new DataFactory("football.dat") {
+            @Override
+            public DataModel createInstance(String line) {
+                return new FootballModel(line);
+            }
+        };
 
-        for(FootballModel football: footballFactory.all())
+        for(DataModel dataModel: dataFactory.all())
         {
+            FootballModel football = (FootballModel) dataModel;
             Integer goalsDifference = football.getGoalsDifference();
             Integer worstGoalsDifference = footballTeamWorstGoalsDifference.getGoalsDifference();
             if(goalsDifference != null && (worstGoalsDifference == null || goalsDifference < worstGoalsDifference))

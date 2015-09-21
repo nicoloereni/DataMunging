@@ -7,12 +7,17 @@ public class FootballFactoryTest {
 
     @Test
     public void footballFactoryGetAllItemsTest(){
-        FootballFactory footballFactory = new FootballFactory("football.dat");
-        TestCase.assertNotNull(footballFactory.all());
-        TestCase.assertEquals(22, footballFactory.all().size());
+        DataFactory dataFactory = new DataFactory("football.dat") {
+            @Override
+            public DataModel createInstance(String line) {
+                return new FootballModel(line);
+            }
+        };
+        TestCase.assertNotNull(dataFactory.all());
+        TestCase.assertEquals(22, dataFactory.all().size());
         TestCase.assertTrue(
                 new FootballModel("    1. Arsenal         38    26   9   3    79  -  36    87\n")
-                        .equals( footballFactory.all().get(1)));
+                        .equals(dataFactory.all().get(1)));
     }
 
 }

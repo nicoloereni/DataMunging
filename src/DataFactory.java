@@ -4,15 +4,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FootballFactory {
+public abstract class DataFactory {
     private String fileName;
 
-    public FootballFactory(String fileName) {
+    public DataFactory(String fileName) {
         this.fileName = fileName;
     }
 
-    public ArrayList<FootballModel> all() {
-        ArrayList<FootballModel> result = new ArrayList<FootballModel>();
+    public ArrayList<DataModel> all() {
+        ArrayList<DataModel> result = new ArrayList<DataModel>();
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)));
@@ -27,7 +27,7 @@ public class FootballFactory {
                     continue;
                 }
 
-                result.add(new FootballModel(readLine));
+                result.add(createInstance(readLine));
             }
 
         } catch (IOException e) {
@@ -36,4 +36,7 @@ public class FootballFactory {
 
         return result;
     }
+
+
+    public abstract DataModel createInstance(String line);
 }
