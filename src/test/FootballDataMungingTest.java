@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class FootballWeatherDataMungingTest {
+public class FootballDataMungingTest {
 
     @Test
     public void getWorstGoalsDifference()
