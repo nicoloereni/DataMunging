@@ -15,8 +15,11 @@ public class WeathersFactory {
     public ArrayList<WeatherModel> all()
     {
         ArrayList<WeatherModel> result = new ArrayList<WeatherModel>();
+
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(fileName)));
+            //perchè questa riga non la vogliamo
+
             while (true) {
                 String readLine = bufferedReader.readLine();
 
