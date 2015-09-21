@@ -1,6 +1,5 @@
-import java.util.ArrayList;
 
-public class WeatherDataMunging {
+public class WeatherDataMunging extends DataMunging {
 
     private String fileName;
 
@@ -12,24 +11,12 @@ public class WeatherDataMunging {
 
         DataFactory weathersFactory = new DataFactory(fileName) {
             @Override
-            public DataModel createInstance(String line) {
+            public DataModel createDataModelInstance(String line) {
                 return new WeatherModel(line);
             }
         };
-        ArrayList<DataModel> weatherModels = weathersFactory.all();
 
-        WeatherModel lowestTemperatureWeather = new WeatherModel(null);
-
-        for(DataModel datamodel:weatherModels){
-
-            WeatherModel weatherModel = (WeatherModel) datamodel;
-
-            if(weatherModel.isTempIsLowerThen(lowestTemperatureWeather.minTemp))
-            {
-                lowestTemperatureWeather = weatherModel;
-            }
-        }
-
+        WeatherModel lowestTemperatureWeather = (WeatherModel)getDataModelSatisfiedCondition(weathersFactory.all());
         return "day: "+ lowestTemperatureWeather.dayNumber +" temp: " + lowestTemperatureWeather.minTemp;
     }
 

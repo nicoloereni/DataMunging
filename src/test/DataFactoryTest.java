@@ -9,7 +9,7 @@ public class DataFactoryTest {
     public void footballFactoryGetAllItemsTest(){
         DataFactory dataFactory = new DataFactory("football.dat") {
             @Override
-            public DataModel createInstance(String line) {
+            public DataModel createDataModelInstance(String line) {
                 return new FootballModel(line);
             }
         };
@@ -24,7 +24,7 @@ public class DataFactoryTest {
     public void weathersApiGetAllItemsTest(){
         DataFactory weathersApi = new DataFactory("weather.dat") {
             @Override
-            public DataModel createInstance(String line) {
+            public DataModel createDataModelInstance(String line) {
                 return new WeatherModel(line);
             }
         };

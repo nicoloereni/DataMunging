@@ -8,7 +8,7 @@ public class FootballDataMungingTest {
     public void getWorstGoalsDifference()
     {
         FootballDataMunging footballDataMunging = new FootballDataMunging();
-        assertEquals("Leicester", footballDataMunging.getWorstGoalSDifferenceTeam());
+        assertEquals("Leicester", footballDataMunging.getWorstGoalsDifferenceTeam());
     }
 
 }

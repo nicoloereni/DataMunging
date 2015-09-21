@@ -36,4 +36,21 @@ public class FootballModel implements DataModel {
         return false;
 
     }
+
+    private boolean isGoalDifferenceWorstThan(DataModel dataModel) {
+
+        if(dataModel == null){
+            return true;
+        }
+
+        FootballModel footballModel = (FootballModel) dataModel;
+        Integer worstGoalDifference = footballModel.getGoalsDifference();
+
+        return this.getGoalsDifference() != null && (worstGoalDifference == null || this.getGoalsDifference() < worstGoalDifference);
+    }
+
+    @Override
+    public boolean isConditionSatisfied(DataModel dataToComnpare) {
+        return isGoalDifferenceWorstThan(dataToComnpare);
+    }
 }

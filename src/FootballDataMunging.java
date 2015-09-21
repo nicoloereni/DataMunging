@@ -1,28 +1,15 @@
+public class FootballDataMunging extends DataMunging{
 
-public class FootballDataMunging {
-
-    public String getWorstGoalSDifferenceTeam() {
-
-        FootballModel footballTeamWorstGoalsDifference = new FootballModel("");
+    public String getWorstGoalsDifferenceTeam() {
 
         DataFactory dataFactory = new DataFactory("football.dat") {
             @Override
-            public DataModel createInstance(String line) {
+            public DataModel createDataModelInstance(String line) {
                 return new FootballModel(line);
             }
         };
 
-        for(DataModel dataModel: dataFactory.all())
-        {
-            FootballModel football = (FootballModel) dataModel;
-            Integer goalsDifference = football.getGoalsDifference();
-            Integer worstGoalsDifference = footballTeamWorstGoalsDifference.getGoalsDifference();
-            if(goalsDifference != null && (worstGoalsDifference == null || goalsDifference < worstGoalsDifference))
-            {
-                footballTeamWorstGoalsDifference = football;
-            }
-        }
-
+        FootballModel footballTeamWorstGoalsDifference = (FootballModel) getDataModelSatisfiedCondition(dataFactory.all());
         return footballTeamWorstGoalsDifference.teamName;
     }
 }

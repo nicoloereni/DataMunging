@@ -4,7 +4,7 @@ public class WeatherModel implements DataModel{
     public Integer minTemp;
 
     public WeatherModel(String readLine) {
-        if(readLine != null) {
+        if(readLine != null && !readLine.isEmpty()) {
 
             this.dayNumber = readLine.substring(0, 4).trim();
             try {
@@ -15,7 +15,7 @@ public class WeatherModel implements DataModel{
         }
     }
 
-    public boolean isTempIsLowerThen(Integer minTemp) {
+    private boolean isTempIsLowerThen(Integer minTemp) {
         if(minTemp == null) return true;
         if(this.minTemp == null) return false;
         return this.minTemp < minTemp;
@@ -32,5 +32,11 @@ public class WeatherModel implements DataModel{
 
         return false;
 
+    }
+
+    @Override
+    public boolean isConditionSatisfied(DataModel dataToComnpare) {
+        WeatherModel weatherModel = (WeatherModel) dataToComnpare;
+        return dataToComnpare == null || isTempIsLowerThen(weatherModel.minTemp);
     }
 }

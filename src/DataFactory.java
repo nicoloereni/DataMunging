@@ -27,7 +27,7 @@ public abstract class DataFactory {
                     continue;
                 }
 
-                result.add(createInstance(readLine));
+                result.add(createDataModelInstance(readLine));
             }
 
         } catch (IOException e) {
@@ -38,5 +38,5 @@ public abstract class DataFactory {
     }
 
 
-    public abstract DataModel createInstance(String line);
+    public abstract DataModel createDataModelInstance(String line);
 }
