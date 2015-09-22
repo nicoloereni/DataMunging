@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public abstract class DataFactory {
+public abstract class DataFactory{
     private String fileName;
 
     public DataFactory(String fileName) {
